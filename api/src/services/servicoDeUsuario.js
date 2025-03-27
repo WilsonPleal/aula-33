@@ -4,6 +4,6 @@ exports.obterTodosUsuarios = async () => {
   return await repositorioDeUsuario.encontrarTodosUsuarios();
 };
 
-exports.criarNovoUsuario = async (nome, email, cpf) => {
-  return await repositorioDeUsuario.criarNovoUsuario(nome, email, cpf);
-};
+exports.adicionarUsuario = async (usuario) => {
+  return await repositorioDeUsuario.adicionarUsuario(usuario);
+}

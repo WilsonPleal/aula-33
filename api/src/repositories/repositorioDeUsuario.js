@@ -8,8 +8,8 @@ exports.encontrarTodosUsuarios = async () => {
   return usuarios;
 };
 
-exports.criarNovoUsuario = async (nome, email, cpf) => {
-  const usuario = { id: usuarios.length + 1, nome, email, cpf };
-  usuarios.push(usuario);
-  return usuario;
-};
+exports.adicionarUsuario = async (usuario) => {
+  const novoUsuario = { id: usuarios.length + 1, ...usuario };
+  usuarios.push(novoUsuario);
+  return novoUsuario;
+}

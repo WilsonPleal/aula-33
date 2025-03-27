@@ -9,16 +9,12 @@ exports.obterTodosUsuarios = async (_req, res) => {
   }
 };
 
-exports.criarNovoUsuario = async (req, res) => {
-  const { nome, email, cpf } = req.body;
+exports.adicionarUsuario = async (req, res) => {
+  const usuario = req.body;
   try {
-    const novoUsuario = await servicoDeUsuario.criarNovoUsuario(
-      nome,
-      email,
-      cpf
-    );
+    const novoUsuario = await servicoDeUsuario.adicionarUsuario(usuario);
     res.status(201).json(novoUsuario);
   } catch (error) {
-    res.status(500).send("Erro ao criar usuário");
+    res.status(500).send("Erro ao adicionar usuário");
   }
 };
