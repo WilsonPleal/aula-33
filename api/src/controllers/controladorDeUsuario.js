@@ -1,6 +1,6 @@
 const servicoDeUsuario = require("../services/servicoDeUsuario");
 
-exports.pegarTodos = async (res) => {
+exports.pegarTodos = async (_req, res) => {
   const usuarios = await servicoDeUsuario.buscarTodos();
 
   if (usuarios.length === 0) {
