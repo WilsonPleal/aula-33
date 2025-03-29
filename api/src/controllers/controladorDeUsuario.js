@@ -1,20 +1,11 @@
 const servicoDeUsuario = require("../services/servicoDeUsuario");
 
-exports.obterTodosUsuarios = async (_req, res) => {
-  try {
-    const usuarios = await servicoDeUsuario.obterTodosUsuarios();
-    res.json(usuarios);
-  } catch (error) {
-    res.status(500).send("Erro ao recuperar usuários");
-  }
-};
+exports.pegarTodos = async (res) => {
+  const usuarios = await servicoDeUsuario.buscarTodos();
 
-exports.adicionarUsuario = async (req, res) => {
-  const usuario = req.body;
-  try {
-    const novoUsuario = await servicoDeUsuario.adicionarUsuario(usuario);
-    res.status(201).json(novoUsuario);
-  } catch (error) {
-    res.status(500).send("Erro ao adicionar usuário");
+  if (usuarios.length === 0) {
+    return res.status(404).json({ messagem: "Nenhum usuário foi encontrado." });
   }
+
+  res.status(200).json(usuarios);
 };

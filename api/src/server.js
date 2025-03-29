@@ -1,10 +1,13 @@
 const express = require("express");
-const app = express();
-const rotaDeUsuarios = require("./routes/rotasDeUsuario");
+const rotas = require("./routes");
+const server = express();
 
-app.use(express.json());
-app.use("/usuarios", rotaDeUsuarios);
+server.use(express.json());
 
-app.get("/", (_req, res) => res.send("Olá mundo!"));
+server.use(rotas);
 
-app.listen(3000, () => console.log("Servidor rodando!"));
+server.use((_req, res, _next) =>
+  res.status(404).json({ erro: "Rota não existe" })
+);
+
+server.listen(3000, () => console.log("Servidor está rodando!"));

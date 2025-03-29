@@ -1,9 +1,7 @@
 const express = require("express");
-const router = express.Router();
 const controladorDeUsuario = require("../controllers/controladorDeUsuario");
+const rotasDeUsuario = express.Router();
 
-router.get("/", controladorDeUsuario.obterTodosUsuarios);
+rotasDeUsuario.get("/", controladorDeUsuario.pegarTodos);
 
-router.post("/", controladorDeUsuario.adicionarUsuario);
-
-module.exports = router;
+module.exports = rotasDeUsuario;
