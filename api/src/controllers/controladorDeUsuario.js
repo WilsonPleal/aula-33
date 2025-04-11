@@ -9,3 +9,17 @@ exports.pegarTodos = async (_req, res) => {
 
   res.status(200).json(usuarios);
 };
+
+exports.criar = async (req, res) => {
+  const { nome, email, cpf } = req.body;
+
+  if (!nome || !email || !cpf) {
+    return res
+      .status(400)
+      .json({ messagem: "Todos os campos são obrigatórios." });
+  }
+
+  const usuario = await servicoDeUsuario.criar(nome, email, cpf);
+
+  res.status(201).json(usuario);
+};

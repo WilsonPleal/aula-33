@@ -4,3 +4,9 @@ const usuarios = [
 ];
 
 exports.buscarTodos = async () => usuarios;
+
+exports.criar = async (usuario) => {
+  usuarios.push(usuario);
+
+  return usuario;
+};
